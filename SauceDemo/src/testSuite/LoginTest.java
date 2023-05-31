@@ -26,11 +26,13 @@ public class LoginTest extends BaseTest {
         WebElement btn=driver.findElement(By.xpath("//input[@id='login-button']"));
         btn.click();
 
+        //verify product on another page
         WebElement product=driver.findElement(By.xpath("//div/span[text()='Products']"));
         String actualProduct=product.getText();
         String expectedProduct="Products";
         Assert.assertEquals("verify product",expectedProduct,actualProduct);
 
+        //display 6 item
        List<WebElement> item= driver.findElements(By.xpath("//div[@class='inventory_item']"));
         System.out.println(item.size());
 

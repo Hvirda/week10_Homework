@@ -18,7 +18,7 @@ public class LoginTest extends BaseTest {
         openBrowser(baseUrl);
     }
     @Test
-    public void test1(){
+    public void test1() throws InterruptedException{
         WebElement link=driver.findElement(By.linkText("Log in"));
         link.click();
         WebElement text=driver.findElement(By.xpath("//div/h1"));
@@ -33,11 +33,13 @@ public class LoginTest extends BaseTest {
         WebElement lgnbtn=driver.findElement(By.xpath("//form/div[3]/button"));
         lgnbtn.click();
 
+        //verify logout word on next page
         WebElement logout=driver.findElement(By.linkText("Log out"));
         String actualText1=logout.getText();
         String ExpectedText="Log out";
         Assert.assertEquals("verify logout",ExpectedText,actualText1);
 
+        //verify unsuccessful login message
         WebElement errormsg=driver.findElement(By.xpath("//div[text()='Login was unsuccessful. Please correct the errors and try again.']"));
         String actualError=errormsg.getText();
         String expectedError="Login was unsuccessful. Please correct the errors and try again.";
